@@ -35,7 +35,7 @@ function Start({ setUsername, targetDate }) {
       return;
     }
     const data = { name, upi };
-    let res = await fetch("http://localhost:3000/api/singup", {
+    let res = await fetch("https://kbcapp-jitendra895.vercel.app/api/singup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
