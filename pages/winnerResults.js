@@ -9,7 +9,7 @@ function Page() {
   const { id } = router.query;
 
   useEffect(() => {
-    fetch("https://kbcapp-jitendra895.vercel.app/api/getWinner")
+    fetch("/api/getWinner")
       .then((res) => res.json())
       .then((data) => {
        setWinner(data.winner)

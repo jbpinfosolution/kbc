@@ -2,12 +2,14 @@
   "name": "kbc",
   "version": "0.1.0",
   "private": true,
+  "proxy":"https://kbcapp-jitendra895.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "static": "next build && next export"
+    
   },
   "dependencies": {
     "@capacitor/android": "^4.6.1",
@@ -18,6 +20,7 @@
     "@ionic/react": "^6.4.1",
     "@mui/material": "^5.11.3",
     "@next/font": "13.1.1",
+    "cors": "^2.8.5",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "ionicons": "^6.0.4",

@@ -17,7 +17,7 @@ export default function Home() {
   const [time, setTime] = useState(new Date().getTime());
 
   useEffect(() => {
-    fetch("https://kbcapp-jitendra895.vercel.app/api/getQuestions")
+    fetch("api/getQuestions")
       .then((res) => res.json())
       .then((data) => {
         setData(data.question);
@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    fetch("https://kbcapp-jitendra895.vercel.app/api/getCountdownTime")
+    fetch("api/getCountdownTime")
       .then((res) => res.json())
       .then((tim) => {
         setTime(new Date(tim.time[0].time));
@@ -37,7 +37,7 @@ export default function Home() {
   const submitResults = async (e) => {
     e.preventDefault();
     const result = { userName: username, score: earned };
-    let res = await fetch("https://kbcapp-jitendra895.vercel.app/api/addResult", {
+    let res = await fetch("api/addResult", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
