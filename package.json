@@ -2,14 +2,13 @@
   "name": "kbc",
   "version": "0.1.0",
   "private": true,
-  "proxy":"https://kbcapp-jitendra895.vercel.app",
+  "proxy": "https://kbcapp-jitendra895.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "static": "next build && next export"
-    
   },
   "dependencies": {
     "@capacitor/android": "^4.6.1",
@@ -27,6 +26,7 @@
     "mongoose": "^6.8.2",
     "next": "13.1.1",
     "next-transpile-modules": "^10.0.0",
+    "nextjs-cors": "^2.1.2",
     "react": "18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0",
