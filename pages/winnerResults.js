@@ -1,43 +1,58 @@
 import { useEffect, useState } from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Styles from "../styles/Home.module.css";
-// import { Container, Row, Col } from 'react-bootstrap';
+import { App } from "@capacitor/app";
 
-function Page() {
+function WinnerResults() {
   const router = useRouter();
-  const [winner,setWinner] = useState([])
+  const [winner, setWinner] = useState([]);
   const { id } = router.query;
 
   useEffect(() => {
-    fetch("/api/getWinner")
+    const handleBackButton = async () => {
+      if (router.pathname === "/") {
+        await App.exitApp();
+      } else {
+        router.back();
+      }
+    };
+    App.addListener("backButton", handleBackButton);
+    return () => {
+      App.removeAllListeners("backButton", handleBackButton);
+    };
+  }, [router.pathname]);
+
+  useEffect(() => {
+    fetch("https://server-ue6g.vercel.app/api/getWinner")
       .then((res) => res.json())
       .then((data) => {
-       setWinner(data.winner)
-        console.log(data.winner);
+        setWinner(data.winner);
       });
   }, []);
 
   return (
     <div className={Styles.winner}>
-    <table className="table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>winner</th>
-        </tr>
-      </thead>
-      {winner.slice(0).reverse().map((winner) =>
-      <tbody key={winner._id}>
-      <tr>
-        <td>{winner.date}</td>
-        <td>{winner.userName}</td>
-      </tr>
-    </tbody>
-      )}
-      
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        {winner
+          .slice(0)
+          .reverse()
+          .map((winner) => (
+            <tbody key={winner._id}>
+              <tr>
+                <td>{winner.date}</td>
+                <td>{winner.userName}</td>
+              </tr>
+            </tbody>
+          ))}
+      </table>
     </div>
   );
 }
 
-export default Page;
+export default WinnerResults;

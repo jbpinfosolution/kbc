@@ -2,7 +2,6 @@
   "name": "kbc",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://kbcapp-jitendra895.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +10,9 @@
     "static": "next build && next export"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^4.1.0",
     "@capacitor/android": "^4.6.1",
+    "@capacitor/app": "^4.1.1",
     "@capacitor/core": "^4.6.1",
     "@capacitor/ios": "^4.6.1",
     "@emotion/react": "^11.10.5",
@@ -31,6 +32,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "18.2.0",
     "react-grid-system": "^8.1.6",
+    "react-loader-spinner": "^5.3.4",
     "react-toastify": "^9.1.1",
     "use-sound": "^4.0.1"
   },

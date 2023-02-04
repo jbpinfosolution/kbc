@@ -1,22 +1,15 @@
 import Styles from "/styles/Home.module.css";
 import { useState, useEffect } from "react";
 import useSound from "use-sound";
-// import play from "./sounds/play.wav";
 
 function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
-  const play = "/play.mp3";
-  const corrects = "/correct.mp3";
-  const wrongs = "/wrong.mp3";
+  const corrects = "/Correct2.mp3";
+  const wrongs = "/worng2.mp3";
   const [question, setQuestion] = useState(null);
   const [selectAnswer, setSelectedAnswer] = useState(null);
   const [className, setClassName] = useState("answer");
-  const [letsPlay] = useSound(play);
   const [correctAnswer] = useSound(corrects);
   const [wrongAnswer] = useSound(wrongs);
-
-  useEffect(() => {
-    letsPlay();
-  }, [letsPlay]);
 
   useEffect(() => {
     setQuestion(data[questionNumber - 1]);
@@ -28,13 +21,10 @@ function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
     }, duration);
   };
   const handleClick = (a, qid) => {
-    console.log(qid);
     setSelectedAnswer(a);
     setClassName("answer active");
+    setClassName(a.correct ? "answer correct" : "answer wrong");
     delay(1000, () => {
-      setClassName(a.correct ? "answer correct" : "answer wrong");
-    });
-    delay(4000, () => {
       if (a.correct) {
         correctAnswer();
         delay(1000, () => {
@@ -70,9 +60,8 @@ function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
   } else {
     return (
       <div className={Styles.won}>
-        Congratulations You won Amazone pay giftcard of worth 500₹
-        <p></p>
-        <p>Please submit your score</p>
+        <h1>Congratulations! You may win exciting prize &#x1f389;</h1>
+        <button onClick={() => setStop(true)}>Ok</button>
       </div>
     );
   }
