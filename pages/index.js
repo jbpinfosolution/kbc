@@ -37,21 +37,23 @@ export default function Home() {
     // demo ad unit id ca-app-pub-3940256099942544/6300978111
 
     const options = {
-      adId: "ca-app-pub-3940256099942544/6300978111",
+      adId: "ca-app-pub-7720753730393552/1815817037",
       adSize: BannerAdSize.ADAPTIVE_BANNER,
       position: BannerAdPosition.BOTTOM_CENTER,
       margin: 0,
-      isTesting: true,
+      // isTesting: true,
     };
     await AdMob.showBanner(options);
   };
 
   const interstitial = async () => {
     AdMob.addListener(InterstitialAdPluginEvents.Loaded, (info) => {});
+    //ca-app-pub-7720753730393552/2959619496 real ad id
+    // demo ad unit id ca-app-pub-3940256099942544/8691691433
 
     const options = {
-      adId: "ca-app-pub-3940256099942544/8691691433",
-      isTesting: true,
+      adId: "ca-app-pub-7720753730393552/2959619496",
+      // isTesting: true,
     };
     await AdMob.prepareInterstitial(options);
   };
@@ -88,8 +90,11 @@ export default function Home() {
     fetch("https://server-ue6g.vercel.app/api/getQuestions")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.question);
-        console.log(data.question);
+        const selectedData = data.fullQuestions
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 15);
+        setData(selectedData);
+        console.log(selectedData);
         setLoader(false);
       });
   }, []);
@@ -172,13 +177,13 @@ export default function Home() {
         <Circles
           height="80"
           width="80"
-          color="green"
+          color="white"
           ariaLabel="circles-loading"
           wrapperStyle={{
             position: "absolute",
             top: " 40%",
             left: " 40%",
-            background: "white",
+            // background: "white",
           }}
           wrapperClass=""
           visible={true}

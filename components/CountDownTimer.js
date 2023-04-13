@@ -24,7 +24,7 @@ const CountDownTimer = ({ targetDate, handleClick }) => {
   if (days + hours + minutes + seconds <= 0) {
     return (
       <>
-        <Image src="./kbw.png" alt="kbc" width={220} height={300} />
+        <Image src="./logo1.png" alt="kbc" width={280} height={300} />
         <button className="startButton" onClick={handleClick}>
           start
         </button>
@@ -33,7 +33,7 @@ const CountDownTimer = ({ targetDate, handleClick }) => {
   } else {
     return (
       <>
-        <Image src="./kbw.png" alt="kbc" width={220} height={300} />
+        <Image src="./logo1.png" alt="kbc" width={280} height={300} />
         <p style={{ color: "white" }}>Quiz will be started in</p>
         <ShowCounter
           days={days}

@@ -12,7 +12,7 @@ function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
   const [wrongAnswer] = useSound(wrongs);
 
   useEffect(() => {
-    setQuestion(data[questionNumber - 1]);
+    setQuestion(data[questionNumber-1]);
   }, [data, questionNumber]);
 
   const delay = (duration, callback) => {
@@ -40,7 +40,7 @@ function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
     });
   };
 
-  if (question?.id <= 15) {
+  if (questionNumber <= 15) {
     return (
       <div className={Styles.trivia}>
         <div className={Styles.question}>{question?.question}</div>
@@ -49,7 +49,7 @@ function Trivia({ data, setStop, questionNumber, setQuestionNumber }) {
             <div
               key={a.id}
               className={selectAnswer === a ? className : "answer"}
-              onClick={() => handleClick(a, question?.id)}
+              onClick={() => handleClick(a)}
             >
               {a.text}
             </div>

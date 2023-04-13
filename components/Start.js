@@ -142,7 +142,7 @@ function Start({ setUsername, adClick, setLoader }) {
           upi={profile}
           showProfile={showProfile}
         />
-        {image && <Image src="./kbw.png" alt="kbc" width={220} height={300} />}
+        {image && <Image src="./logo1.png" alt="kbc" width={280} height={300} />}
         {cardOpen && (
           <CountDownTimer targetDate={time} handleClick={handleClick} />
         )}
